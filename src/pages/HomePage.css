@@ -1,0 +1,38 @@
+.Hotpot_photo {
+    width: 20%;
+    border: solid;
+}
+
+.Content {
+    margin-top: 1%;
+ 
+}
+
+.main {
+    display: flex;
+    gap: 30px;
+}
+
+.location ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.location li {
+    margin: 10px;
+}
+
+.second {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.map {
+    margin-top: 50px;
+    flex: 100px;
+}
+
+.leaflet {
+    border: solid;
+}

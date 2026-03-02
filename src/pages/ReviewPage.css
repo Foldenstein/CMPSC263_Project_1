@@ -1,0 +1,32 @@
+.menu-soup {
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.menu-meat {
+    background-color: tomato;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.menu-seafood {
+    background-color: lightblue;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 250px;
+    aspect-ratio: 1/1;
+    margin-top: 35px;
+    object-fit: cover;
+}
+
