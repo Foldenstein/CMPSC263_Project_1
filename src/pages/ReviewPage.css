@@ -2,18 +2,21 @@
     background-color: lightgreen;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px
 }
 
 .menu-meat {
     background-color: tomato;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
 }
 
 .menu-seafood {
     background-color: lightblue;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
 }
 
 .menu-item {
@@ -21,12 +24,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    color: black;
 }
 
-img {
+.menu-item img {
+    display: block;
     width: 250px;
     aspect-ratio: 1/1;
     margin-top: 35px;
     object-fit: cover;
 }
 
+.menu-item:hover {
+    background-color: white;
+    transform: scale(1.03);
+}

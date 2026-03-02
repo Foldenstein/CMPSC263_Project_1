@@ -3,6 +3,7 @@ import Home from "./pages/HomePage";
 import Contact from "./pages/ContactPage";
 import User from "./pages/UserPage";
 import Review from "./pages/ReviewPage";
+import ItemReview from "./pages/ItemReviewPage";
 import { Route, Routes } from 'react-router-dom'; 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
                     <Route path="/review" element={<Review />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/user" element={<User />} />
-                    
+                    <Route path="/review/:itemName" element={<ItemReview />} />
                 </Routes>
             </div>
             

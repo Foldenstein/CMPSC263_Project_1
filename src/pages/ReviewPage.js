@@ -1,4 +1,5 @@
 import './ReviewPage.css';
+import { Link } from "react-router-dom";
 
 function ReviewPage() {
     const soups = [{name: 'Herbal Soup', img: './picture/herbalsoup.jpg'}, 
@@ -21,30 +22,30 @@ function ReviewPage() {
             <p>Important to know what type of soup base to choose from for hot pot. It's what you will cook your food in.</p>
             <div className='menu-soup'>
                 {soups.map(soup => (
-                    <div className='menu-item'>
+                    <Link to={`/review/${soup.name.toLowerCase().replace(/\s/g, "-")}`} className="menu-item">
                         <img src={soup.img} alt='work in progress'/>
                         <h2>{soup.name}</h2>
-                    </div>
+                    </Link>
                 ))}
             </div>
             <h1>Meat Options</h1>
             <p>Thinly sliced for quick cooking. The meat absorb the flavor of the hot pot.</p>
             <div className='menu-meat'>
                 {meats.map(meat => (
-                    <div className='menu-item'>
+                    <Link to={`/review/${meat.name.toLowerCase().replace(/\s/g, "-")}`}  className='menu-item'>
                         <img src={meat.img} alt='work in progress'/>
                         <h2>{meat.name}</h2>
-                    </div>
+                    </Link>
                 ))}
             </div>
             <h1>Seafood Options</h1>
             <p>Fresh from the market. The seafood cooks quickky and absorb the flavor of the hot pot.</p>
             <div className='menu-seafood'>
                 {seafood.map(seafood => (
-                    <div className='menu-item'>
+                    <Link to={`/review/${seafood.name.toLowerCase().replace(/\s/g, "-")}`}  className='menu-item'>
                         <img src={seafood.img} alt='work in progress'/>
                         <h2>{seafood.name}</h2>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
