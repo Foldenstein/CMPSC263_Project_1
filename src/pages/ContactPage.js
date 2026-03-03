@@ -31,9 +31,8 @@ function ContactPage() {
         last_name: formData.lastname,
         email: formData.email,
         message: formData.subject,
-        submitted_at: serverTimestamp() 
+        submitted_at: serverTimestamp()  // sort the messages by time in the database
       });
-
       setFormData({ firstname: '', lastname: '', email: '', subject: '' });
     } finally {
       setIsSubmitting(false);
