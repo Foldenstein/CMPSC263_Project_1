@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db, auth } from "./firebase.js"; 
-import { collection, query, where, doc, getDocs, getDoc, addDoc, serverTimestamp, orderBy } from "firebase/firestore";
+import { collection, query, where, doc, getDocs, getDoc, setDoc, serverTimestamp, orderBy } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import './ItemReviewPage.css'
 
 function ItemReview() {
     const { itemName } = useParams();
@@ -13,6 +14,9 @@ function ItemReview() {
     const [reviews, setReviews] = useState([]);
     const [newReview, setNewReview] = useState("");
     const [currentUser, setCurrentUser] = useState(null);
+    
+    // rating system
+    const [rating, setRating] = useState(5);
 
     // get current user;s info
     useEffect(() => {
@@ -61,9 +65,15 @@ function ItemReview() {
             
             // needed to put in user username into review
             let username = userDoc.data().username;
-            await addDoc(collection(db, "review"), {
+
+            // unique id base on user id and the menu item. important for replacement
+            const customDocId = `${currentUser.uid}_${itemName}`;
+            // allows for replacement
+            await setDoc(doc(db, "review", customDocId), {
+                userId: currentUser.uid,
                 username: username,
                 review: newReview,
+                rating: Number(rating),
                 menuItem: displayItemName,
                 dateMade: serverTimestamp()
             });
@@ -79,17 +89,28 @@ function ItemReview() {
     return (
         <div>
             <h1>Review for {displayItemName}</h1>
-            <div className="add_review">
+            <div className="add-review">
                 <form onSubmit={handleAddReview}>
+                    <div>
+                        <h3><b>Rating: </b></h3>
+                        <select value={rating} onChange={(e) => setRating(e.target.value)}>
+                            <option value="5">★★★★★</option>
+                            <option value="4">★★★★</option>
+                            <option value="3">★★★</option>
+                            <option value="2">★★</option>
+                            <option value="1">★</option>
+                        </select>
+                    </div>
                     <textarea value={newReview} onChange={(e) => setNewReview(e.target.value)} placeholder="What are your thoughts about this item" required/>
                     <button type="submit">Submit Review</button>
                 </form>
             </div>
-            <div className="review_list">
+            <div className="review-list">
                 <h3>Customer Reviews</h3>
                 {reviews.length > 0 ? (reviews.map((rev) => (
-                    <div>
-                        <p><b>{rev.username}</b> <small>({rev.dateMade?.toDate().toLocaleDateString()})</small></p>
+                    <div className="customer-review">
+                        <p><b>Username: {rev.username}</b> <small>({rev.dateMade?.toDate().toLocaleDateString()})</small></p>
+                        <p>Rating: {"★".repeat(rev.rating)}</p>
                         <p>{rev.review}</p>
                     </div>
                 ))) : (<p>No Reviews Currently</p>)}

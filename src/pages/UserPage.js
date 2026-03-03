@@ -57,10 +57,12 @@ const LoginSignUp = () => {
     if (user) {
         return (
             <div className='user_info'>
-                <h1>Profile</h1>
-                <p><b>Username: </b>{dbusername}</p>
-                <p><b>Email: </b>{user.email}</p>
-                <button onClick={() => signOut(auth)}>Sign Out</button>
+                <div className='test1'>
+                    <h1>Profile</h1>
+                    <p><b>Username: </b>{dbusername}</p>
+                    <p><b>Email: </b>{user.email}</p>
+                    <button onClick={() => signOut(auth)}>Sign Out</button>
+                </div>
             </div>
         );
     }
