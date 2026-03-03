@@ -56,7 +56,7 @@ const LoginSignUp = () => {
 
     if (user) {
         return (
-            <div>
+            <div className='user_info'>
                 <h1>Profile</h1>
                 <p><b>Username: </b>{dbusername}</p>
                 <p><b>Email: </b>{user.email}</p>
